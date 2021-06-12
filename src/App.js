@@ -1,25 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {Route} from 'react-router-dom'
+import Search from './components/search';
+import Header from './components/header';
+import Shelves from './components/shelves';
+import SearchBtn from './components/searchbtn';
+import * as BooksAPI from './BooksAPI'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class BooksApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        books : []
+    }
 }
 
-export default App;
+ 
+ 
+ componentDidMount(){
+   BooksAPI.getAll().then (book => this.setState({
+     books : book
+   }))
+ }
+ // this way when we refresh the page the data changed
+ ////////////////////////////////////////////////////
+//  ChangeBShelf = (book , shelf) => {
+//    this.setState({
+//      books : this.state.books.filter(b => (
+//        b.id === book.id ? b.shelf = shelf : b
+//        ))
+//       }); 
+//   }
+/// this way the data didn't change after refresh
+//////////////////////////////////////////////////
+ChangeBShelf = (book , shelf) => {
+  BooksAPI.update (book , shelf).then (
+    BooksAPI.getAll().then (book => this.setState({
+      books : book
+    }))
+  )
+ }
+  render() {
+    
+    return (
+      <div className="app">
+
+          <Route path='/search'  render = {() => (
+            <Search
+              books = {this.state.books} 
+              ChangeBShelf = {this.ChangeBShelf}
+              />
+          )} />
+          <Route exact path='/' component={Header} />
+          
+          <Route exact path='/' render = {() => (
+            <Shelves 
+              books = {this.state.books}
+              ChangeBShelf = {this.ChangeBShelf}
+              />
+          )} />
+          <Route exact path='/' component={SearchBtn} />
+     
+        )
+      </div>
+    )
+  }
+}
+
+export default BooksApp
