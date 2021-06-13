@@ -25,5 +25,7 @@ state = {
 8 - install prop types
 9 - create a search page and navigate between the main page and search page.
 
-
+## Modifications
+use search method in BooksAPI 
+in search page we can search if there is not thumbnail without any errors
 ## to use the result please clone the project and write in your terminal "npm install" then "npm start"
