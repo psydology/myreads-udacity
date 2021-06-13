@@ -1,6 +1,6 @@
 
 ## my Reads App
-create react app 
+## create react app 
 1 - Draw All of the Views of the App :
 ====================
 |app               |
@@ -12,18 +12,18 @@ create react app
 |  3.searchbtn     |
 |search            |
 ====================
-2 - we need a state in empty array variable i call it book like :
+2 - we need a state in empty array variable i call it 'book' like :
 state = {
     books : []
 }
 
 3 - Hierarchy of Components like in the draw.
-4 - use comopenentDidAmount to fetch data from database and update state using setState()
+4 - use comopenentDidAmount to fetch data from the database and update state using setState()
 5 - pass data throw components
-6 - add functionality to components (fetch all data , update data)
-7 - add navigation by install react router dom
+6 - add functionality to components (fetch all data, update data)
+7 - add navigation by install react-router-dom
 8 - install prop types
-9 - create search page and navigate between main page and search page.
+9 - create a search page and navigate between the main page and search page.
 
 
-## to use the resualt please clone the project and write in your terminal "npm install" then "npm start"
+## to use the result please clone the project and write in your terminal "npm install" then "npm start"

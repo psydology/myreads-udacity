@@ -4,7 +4,7 @@ import Shelf from './shelf'
 
 class Shelves extends Component {
   state = {
-    title : ['Currently Reading' , 'Want To Read' , 'Read']
+    title : ['Currently Reading' , 'Want To Read' , 'Read' , 'None']
   }
   
 
@@ -22,6 +22,7 @@ class Shelves extends Component {
       const Read = books.filter ( book => 
         book.shelf === 'read'
       );
+
         return (
           <div className="list-books">
             <div className="list-books-content">
